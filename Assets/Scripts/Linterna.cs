@@ -5,13 +5,13 @@ using System.Threading.Tasks;
 
 
 [RequireComponent(typeof(Light))]
-[RequireComponent(typeof(SphereCollider))]
+//[RequireComponent(typeof(SphereCollider))]
 // se debe añadir a la linterna
 public class Linterna : MonoBehaviour
 {
     Light luzLinterna;
     [
-        SerializeField]float iluminacionMaxima = 60,iluminacionActual=41,coeficienteDeDesvanecer=53;
+        SerializeField]float iluminacionMaxima = 60,iluminacionActual=41,bateriaActual=100, bateriaMax=100;
     private void Awake()
     {
         luzLinterna = GetComponent<Light>();
@@ -19,21 +19,36 @@ public class Linterna : MonoBehaviour
         //16- 55    
         
     }
-    [ContextMenu("Desvanecer Luz")]
-    public async void DesvanecerLuz()
-    {
-        for (int i = 0; i < coeficienteDeDesvanecer; i++)
+
+    [SerializeField] float velocidadDelay = 0.01f,areaMaxima;
+    [ContextMenu("Desvanecer ")]
+    public async Task Desvanecer()
+    {    // fade out
+        for (; luzLinterna.areaSize.x > 0; luzLinterna.areaSize = new Vector2(luzLinterna.areaSize.y - 1, luzLinterna.areaSize.y - 1))
         {
-            luzLinterna.intensity--;
-            await Task.Delay(10);
+            await Task.Delay(System.TimeSpan.FromMilliseconds(velocidadDelay));
+            if (luzLinterna.areaSize == Vector2.zero)
+            {
+                print("area desvanecida");
+            }
         }
-        for (float i = luzLinterna.intensity; i < iluminacionMaxima; i++)
+
+        //esperar hasta que la bateria sea mayor que 0;
+        while (bateriaActual == 0)
         {
-            luzLinterna.intensity++;
-            await Task.Delay(10);
+            await Task.Delay(System.TimeSpan.FromSeconds(.1f));
+            print("La bateria es 0, esperando por carga");
+        }
+
+        //fade in        
+        for (; luzLinterna .areaSize.x < areaMaxima; luzLinterna.areaSize = new Vector2(luzLinterna.areaSize.y + 1, luzLinterna.areaSize.y + 1))
+        {
+            await Task.Delay(System.TimeSpan.FromMilliseconds(velocidadDelay));
         }
     }
- // solo TOMAR la linterna
 
-    
+
+    // solo TOMAR la linterna
+
+
 }
