@@ -12,12 +12,9 @@ public class Boo : Enemigo
     }
     public override void MoverEnemigo(Vector3 destino)
     {
-        // si este enemigo es la camara retornar if()
         if (GameObject.FindObjectOfType<Linterna>()
             .enemigosDentroDeLaLuzLinterna.Exists(x => x == this.gameObject))
-        {
             puedeMoverse = false;
-        }
         else {puedeMoverse=true; }
         base.MoverEnemigo(destino);
     }

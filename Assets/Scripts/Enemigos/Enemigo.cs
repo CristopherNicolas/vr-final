@@ -18,7 +18,10 @@ public abstract class Enemigo : MonoBehaviour
     [SerializeField] Animator animator;
 
     public abstract void SerAlumbrado();
-    public  void Awake()=> CacheComponentes();
+    public void Awake() {
+        CacheComponentes();
+        agent.speed = velocidadDeMovimiento;
+    } 
     private void Update()
     {
         MoverEnemigo(destino);
@@ -40,11 +43,13 @@ public abstract class Enemigo : MonoBehaviour
     }
     public virtual void MoverEnemigo(Vector3 destino)
     {
-        if (!puedeMoverse) return;
+        if (!puedeMoverse) { DetenerEnemigo();  return; } 
+        agent.isStopped = false;
         agent.SetDestination(destino);
     }
     public virtual void DetenerEnemigo()
     {
         puedeMoverse =false;
+        agent.isStopped = true;
     }
 }
