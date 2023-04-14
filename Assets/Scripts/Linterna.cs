@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 // se debe añadir a la linterna
 public class Linterna : MonoBehaviour
 {
+    public List<GameObject> enemigosDentroDeLaLuzLinterna;
     Light luzLinterna;
-    [
-        SerializeField]float iluminacionMaxima = 60,iluminacionActual=41,bateriaActual=100, bateriaMax=100;
+    [SerializeField]float iluminacionMaxima = 60,iluminacionActual=41,bateriaActual=100, bateriaMax=100;
     private void Awake()
     {
         luzLinterna = GetComponent<Light>();
