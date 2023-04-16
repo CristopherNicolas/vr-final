@@ -10,8 +10,8 @@ using UnityEngine.AI;
 [RequireComponent(typeof(NavMeshAgent))]
 public abstract class Enemigo : MonoBehaviour
 {
-    [SerializeField] Vector3 destino;
-    [SerializeField] AudioSource audioSource;
+    Transform destino;
+    public  AudioSource audioSource;
     public float velocidadDeMovimiento=10;
     public NavMeshAgent agent;
     public bool puedeMoverse = false;// debe comenzar en falsa hasta que el jugador salga de la zona segura se activa.
@@ -24,7 +24,7 @@ public abstract class Enemigo : MonoBehaviour
     } 
     private void Update()
     {
-        MoverEnemigo(destino);
+        MoverEnemigo(destino.position);
     }
     protected virtual void CacheComponentes()
     {
@@ -33,7 +33,7 @@ public abstract class Enemigo : MonoBehaviour
          audioSource = GetComponent<AudioSource>();
          agent = GetComponent<NavMeshAgent>();
             animator = GetComponent<Animator>();
-            destino = GameObject.Find("XR Origin").transform.position;
+            destino = GameObject.Find("XR Origin").transform;
         }
         catch (System.Exception)
         {
@@ -41,6 +41,10 @@ public abstract class Enemigo : MonoBehaviour
             throw;
         }
     }
+    /// <summary>
+    /// Se actualiza en update de todos los enemigos
+    /// </summary>
+    /// <param name="destino"></param>
     public virtual void MoverEnemigo(Vector3 destino)
     {
         if (!puedeMoverse) { DetenerEnemigo();  return; } 
@@ -49,7 +53,7 @@ public abstract class Enemigo : MonoBehaviour
     }
     public virtual void DetenerEnemigo()
     {
-        puedeMoverse =false;
+        // aqui se pueden agregar audios al detenerse
         agent.isStopped = true;
     }
 }

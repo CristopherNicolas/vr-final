@@ -8,17 +8,25 @@ using System.Threading.Tasks;
 using UnityEngine;
 public class Chaser : Enemigo
 {
-    public int segundosDeMovimiento = 0,
-        segundosDeMovimientoMaximo =10;
+    public int segundosDeMovimientoMaximo =10;
     public override void SerAlumbrado()
     {
         // no tiene efecto        
     }
     bool haComenzadoElCD = false;
-    public override async void MoverEnemigo(Vector3 destino)
+    private void Start() => StartCoroutine(Timer());
+    public override  void MoverEnemigo(Vector3 destino)
     { 
-         //haComenzadoElCD = haComenzadoElCD ? true
             base.MoverEnemigo(destino);      
     }
-    
+    IEnumerator Timer()
+    {
+        while (true)
+        {
+            yield return new WaitUntil(() => puedeMoverse);
+            puedeMoverse = false;
+            yield return new WaitForSecondsRealtime(segundosDeMovimientoMaximo);
+            puedeMoverse = true;
+        }
+    }
 }
