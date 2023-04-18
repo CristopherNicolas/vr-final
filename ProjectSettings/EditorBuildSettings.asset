@@ -8,9 +8,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/debug scene 1.unity
     guid: 824659bafdbea0c438ec3fab3b816a74
-  - enabled: 1
-    path: Assets/Scenes/mapa.unity
-    guid: 3372d96f2d3af1b4fa7b301eb99d4971
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   m_configObjects:
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 288ccb843da21e848a81c52cba6c6db1,
       type: 2}

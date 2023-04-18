@@ -4,8 +4,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
-public class Boo : Enemigo
+
+//basilisco
+public class Basilisco : Enemigo
 {
+    //tiempo de reaccion al entrar ala rango
+    private async void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.name ==("XR Origin"))
+        {
+            //print(default)
+        }
+    }
     void Start()
     {
         velocidadDeMovimiento = 10;
@@ -21,7 +31,5 @@ public class Boo : Enemigo
     public override void SerAlumbrado()
     {
         puedeMoverse = false;
-        //animacion de detenerse
-        //sonido detenerse?
     }
 }

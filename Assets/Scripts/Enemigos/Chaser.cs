@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
+//culebron
 public class Chaser : Enemigo
 {
     public int segundosDeMovimientoMaximo =10;
@@ -21,12 +22,13 @@ public class Chaser : Enemigo
     }
     IEnumerator Timer()
     {
+            yield return new WaitUntil(() => puedeMoverse);
         while (true)
         {
-            yield return new WaitUntil(() => puedeMoverse);
             puedeMoverse = false;
             yield return new WaitForSecondsRealtime(segundosDeMovimientoMaximo);
             puedeMoverse = true;
+            yield return new WaitForSecondsRealtime(segundosDeMovimientoMaximo);
         }
     }
 }
