@@ -17,7 +17,8 @@ public class Chaser : Enemigo
     bool haComenzadoElCD = false;
     private void Start() => StartCoroutine(Timer());
     public override  void MoverEnemigo(Vector3 destino)
-    { 
+    {
+
             base.MoverEnemigo(destino);      
     }
     IEnumerator Timer()
