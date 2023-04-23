@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 using UnityEngine.AI;
 /// <summary>
 /// plantilla para la creacion de enemigos
@@ -14,6 +15,7 @@ public abstract class Enemigo : MonoBehaviour
     public  AudioSource audioSource;
     public float velocidadDeMovimiento=10;
     public NavMeshAgent agent;
+    public Vector3 starPos;
     public bool puedeMoverse = false;// debe comenzar en falsa hasta que el jugador salga de la zona segura se activa.
     [SerializeField] Animator animator;
 
@@ -21,6 +23,7 @@ public abstract class Enemigo : MonoBehaviour
     public void Awake() {
         CacheComponentes();
         agent.speed = velocidadDeMovimiento;
+        starPos = transform.position;
     } 
     private void Update()
     {

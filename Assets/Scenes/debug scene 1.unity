@@ -3754,6 +3754,7 @@ MonoBehaviour:
   audioSource: {fileID: 0}
   velocidadDeMovimiento: 4
   agent: {fileID: 0}
+  starPos: {x: 0, y: 0, z: 0}
   puedeMoverse: 0
   animator: {fileID: 0}
   puedeVigilar: 0
