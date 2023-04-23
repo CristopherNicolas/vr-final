@@ -27,7 +27,8 @@ public abstract class Enemigo : MonoBehaviour
     } 
     private void Update()
     {
-        MoverEnemigo(destino.position);
+        //destino = ;
+        MoverEnemigo(new Vector3(destino.position. x - 1, destino.position.y, destino.position.z - 1));
     }
     protected virtual void CacheComponentes()
     {

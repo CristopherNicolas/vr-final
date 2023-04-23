@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 public class AudioSystem : MonoBehaviour
 {
     public static AudioSystem instance;
-    public AudioSource globalAudioSource;
+    public AudioSource globalAudioSource,bgAudiosurce;
      public List<AudioClip> audios;
     public void Awake()
     {
