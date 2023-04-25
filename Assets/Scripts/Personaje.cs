@@ -11,4 +11,11 @@ public class Personaje : MonoBehaviour
     {
         audioSourceJugador = GetComponent<AudioSource>();
     }
+    // agacharse
+    public void Agacharse()
+    {
+        // el input debe mantenerse para mantenerse agachado
+        AudioSystem.instance.PonerSonido("agacharse", 5);
+        AudioSystem.instance.PonerSonido("agacharse", 5,2.1f,GameObject.Find("Boo").GetComponent<AudioSource>());
+    }
 }

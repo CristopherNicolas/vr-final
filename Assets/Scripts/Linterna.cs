@@ -21,34 +21,21 @@ public class Linterna : MonoBehaviour
     }
 
     [SerializeField] float velocidadDelay = 0.01f,areaMaxima;
-    //[ContextMenu("Desvanecer ")]
-    //public async Task Desvanecer()
-    //{    // fade out
-    //    for (; luzLinterna.areaSize.x > 0; luzLinterna.areaSize = new Vector2(luzLinterna.areaSize.y - 1, luzLinterna.areaSize.y - 1))
-    //    {
-    //        await Task.Delay(System.TimeSpan.FromMilliseconds(velocidadDelay));
-    //        if (luzLinterna.areaSize == Vector2.zero)
-    //        {
-    //            print("area desvanecida");
-    //        }
-    //    }
 
-    //    //esperar hasta que la bateria sea mayor que 0;
-    //    while (bateriaActual == 0)
-    //    {
-    //        await Task.Delay(System.TimeSpan.FromSeconds(.1f));
-    //        print("La bateria es 0, esperando por carga");
-    //    }
-
-    //    ////fade in        
-    //    //for (; luzLinterna .areaSize.x < areaMaxima; luzLinterna.areaSize = new Vector2(luzLinterna.areaSize.y + 1, luzLinterna.areaSize.y + 1))
-    //    //{
-    //    //    await Task.Delay(System.TimeSpan.FromMilliseconds(velocidadDelay));
-    //    //}
-    //}
-
-
-    // solo TOMAR la linterna
-
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.name == "Direct Interactor")
+        {
+            print("flag");
+            transform.parent = other.gameObject.transform;
+            GetComponent<Rigidbody>().isKinematic = true;
+            GetComponent<BoxCollider>().isTrigger = true;
+        }
+    }
+    /// <summary>
+    /// se usa con las piedras
+    /// </summary>
+    /// <param name="c"></param>
+    void CambiarColorLuz(Color c) => luzLinterna.color = c;
 
 }
