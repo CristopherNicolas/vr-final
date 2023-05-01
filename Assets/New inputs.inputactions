@@ -1,0 +1,34 @@
+{
+    "name": "New inputs",
+    "maps": [
+        {
+            "name": "map 1",
+            "id": "93ed0ca6-6b5d-4464-b5cb-68f7f05d49ca",
+            "actions": [
+                {
+                    "name": "triger pressed",
+                    "type": "Button",
+                    "id": "62448cd0-7bef-4edf-ad34-de9f561b786a",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "9b8d9ce3-dfb3-4dd9-9f34-a7cad44e7d16",
+                    "path": "<ViveController>{RightHand}/triggerPressed",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": "",
+                    "action": "triger pressed",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
