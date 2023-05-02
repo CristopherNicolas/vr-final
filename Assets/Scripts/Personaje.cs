@@ -8,6 +8,7 @@ public class Personaje : MonoBehaviour
     public float velocidad;
     PlayerInput xrInput;
     public AudioSource audioSourceJugador;
+    public List<Bengala> bengalas;
     bool estaEnZonaSegura = true;
     public void Start()
     {
@@ -20,6 +21,11 @@ public class Personaje : MonoBehaviour
         if (xrInput.actions["Activate"].IsPressed())
         {
             Debug.Log("xr input presionado");
+            if (bengalas.Count>0)
+            {
+                // soltar bengala
+                bengalas.ForEach(x => x.transform.SetParent(null));
+            }
         }
     }
     public void Agacharse()

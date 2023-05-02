@@ -20,6 +20,10 @@ public abstract class Enemigo : MonoBehaviour
     [SerializeField] Animator animator;
 
     public abstract void SerAlumbrado();
+    public void Start()
+    {
+        //AudioSystem.instance.PonerSonido("monstruos_respiracionIdle", 5);
+    }
     public void Awake() {
         CacheComponentes();
         agent.speed = velocidadDeMovimiento;
