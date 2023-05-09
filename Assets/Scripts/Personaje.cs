@@ -25,6 +25,7 @@ public class Personaje : MonoBehaviour
             {
                 // soltar bengala
                 bengalas.ForEach(x => x.transform.SetParent(null));
+                //bengalas.
             }
         }
     }
