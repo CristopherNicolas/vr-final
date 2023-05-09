@@ -10,15 +10,20 @@ public class ColicionLinterna : MonoBehaviour
     {
         linterna = transform.parent.GetComponent<Linterna>();
     }
-    private void OnTriggerEnter(Collider other)
+    public virtual void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Enemigo"))
         {
             Debug.Log("Enemigo colicionado");
             linterna.enemigosDentroDeLaLuzLinterna.Add(other.gameObject);
         }
+        else if(other.gameObject.GetComponent<PuzzleRojoPunto>())
+        {
+            var puzzle = other.transform.parent.GetComponent<PuzzleRojo>();
+            other.GetComponent<PuzzleRojoPunto>().PrenderPunto();
+        }
     }
-    private void OnTriggerExit(Collider other)
+    public virtual void OnTriggerExit(Collider other)
     {
         if (other.CompareTag("Enemigo") && linterna.enemigosDentroDeLaLuzLinterna
             .Exists(x => x == other.gameObject))

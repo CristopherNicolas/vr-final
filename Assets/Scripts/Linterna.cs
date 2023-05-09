@@ -4,7 +4,7 @@ using UnityEngine;
 using System.Threading.Tasks;
 
 
-[RequireComponent(typeof(Light))]
+//[RequireComponent(typeof(Light))]
 //[RequireComponent(typeof(SphereCollider))]
 // se debe añadir a la linterna
 public class Linterna : MonoBehaviour
