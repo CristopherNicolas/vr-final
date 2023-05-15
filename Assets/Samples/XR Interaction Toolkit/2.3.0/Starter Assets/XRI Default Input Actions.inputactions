@@ -619,6 +619,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "Agacharse",
+                    "type": "Button",
+                    "id": "091b6590-d510-462a-98d5-98fe77b3db17",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -751,6 +760,17 @@
                     "processors": "ScaleVector2(x=0),StickDeadzone",
                     "groups": "Generic XR Controller",
                     "action": "Translate Anchor",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e02f0156-f795-40b5-8e6a-b193190c68cd",
+                    "path": "<XRController>{LeftHand}/gripPressed",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Agacharse",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
@@ -1349,6 +1369,17 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Generic XR Controller",
+                    "action": "Activate",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "59c3715f-1e4a-4996-9fef-7e77d66aa91e",
+                    "path": "<ViveController>{RightHand}/gripPressed",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
                     "action": "Activate",
                     "isComposite": false,
                     "isPartOfComposite": false

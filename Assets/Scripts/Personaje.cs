@@ -3,29 +3,47 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 [RequireComponent(typeof(AudioSource))]
+[RequireComponent(typeof(PlayerInput))]
 public class Personaje : MonoBehaviour
 {
     public float velocidad;
     PlayerInput xrInput;
     public AudioSource audioSourceJugador;
     public List<Bengala> bengalas;
-    bool estaEnZonaSegura = true;
+    bool estaEnZonaSegura = true,estaAgachado=false;
+    Linterna linterna;
+    Vector3 offset;
+
     public void Start()
     {
+        linterna = GameObject.FindObjectOfType<Linterna>();
         xrInput = GetComponent<PlayerInput>();
         audioSourceJugador = GetComponent<AudioSource>();
+        offset = transform.GetChild(0).transform.position;
     }
     // agacharse
     private void Update()
     {
         if (xrInput.actions["Activate"].IsPressed())
         {
-            Debug.Log("xr input presionado");
-            if (bengalas.Count>0)
+            Debug.Log("xr input derecho presionado");
+             linterna.CambiarTipoDeLinterna
+                (linterna.tipolINTERNA == TIPOLINTERNA.TipoLinternaBlanca 
+                ? TIPOLINTERNA.TipoLinternaRoja
+                 :TIPOLINTERNA.TipoLinternaBlanca);
+        }
+        if (xrInput.actions["Agacharse"].IsPressed())
+        {
+            print("agachado");
+            if (estaAgachado)
             {
-                // soltar bengala
-                bengalas.ForEach(x => x.transform.SetParent(null));
-                //bengalas.
+              transform.GetChild(0).transform.position = offset;
+                estaAgachado = false;
+            }
+            else
+            {
+                transform.GetChild(0).transform.position = offset/2;
+                estaAgachado = true;
             }
         }
     }
