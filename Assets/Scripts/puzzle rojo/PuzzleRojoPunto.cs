@@ -9,27 +9,26 @@ using DG.Tweening;
 public class PuzzleRojoPunto : MonoBehaviour
 {
     Light l;
-    private void Start()
-    {
-        l = GetComponent<Light>();
-    }
-    public void   PrenderPunto()
+   private void Start()=> l = GetComponent<Light>();
+
+    public void PrenderPunto()
     {
         l.DOColor(Color.red, 1);
+        //sonido de prender luz puzzle rojo
     }
-    public void     ApagarPunto()
+    public void ApagarPunto()
     {
-
         l.DOColor(Color.black, 1);
+        // sonido de apagar luz puzzle rojo
     }
-   
-
+  
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.GetComponent<ColicionLinterna>())
+        if (other.GetComponent<ColicionLinterna>() && !transform.parent.GetComponent<PuzzleRojo>().puntosRojosAlumbrados.Contains(this))
         {
             //comprobar si es la luz que sigue en el puzzle
-            //si es la que continua, prender esta, so no resetear puzle
+            //si es la que continua, prender esta, si no ,resetear puzle
+            PrenderPunto();
         }
     }
 

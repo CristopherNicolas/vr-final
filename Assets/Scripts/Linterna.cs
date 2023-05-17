@@ -17,6 +17,7 @@ public class Linterna : MonoBehaviour
         //16- 55       
     }
     [SerializeField] float velocidadDelay = 0.01f,areaMaxima;
+    [SerializeField] GameObject particulasRojas, particulasAzul, ParticulasBlancas; //  importante!! las particluas de la linterna deben tener el  componente DestruirParticulas.cs
 
     private void OnTriggerEnter(Collider other)
     {
@@ -41,9 +42,10 @@ public class Linterna : MonoBehaviour
                 //cambiar estructura de colicionLinterna
                 transform.GetChild(1).transform.localScale
                     = new Vector3(1.1558969f, 1.1091336f, 28.1805058f);
-                transform.GetChild(1).transform.position = new Vector3(-0.5f, -29, 1);
+                //transform.GetChild(1).transform.position = new Vector3(-0.5f, -29, 1);
                 // cambiar forma de luz de linterna
                 luzLinterna.spotAngle = 7;
+                Instantiate(particulasRojas, transform);
                 break;
 
 
@@ -52,10 +54,24 @@ public class Linterna : MonoBehaviour
                 CambiarColorLuz(Color.white);
                 transform.GetChild(1).transform.localScale
                     = new Vector3(12.9943323f, 11.730567f, 28.1805058f);
-                transform.GetChild(1).transform.position = new Vector3(-0.5f, -29f, 1f);
+                //transform.GetChild(1).transform.position = new Vector3(-0.5f, -29f, 1f);
                 luzLinterna.spotAngle = 55;
+                Instantiate(ParticulasBlancas, transform);
                 break;
-               default:
+
+
+            case TIPOLINTERNA.TipoLinternaAzul:
+                CambiarColorLuz(Color.blue);
+                transform.GetChild(1).transform.localScale
+                    = new Vector3(12.9943323f, 11.730567f, 28.1805058f);
+              //  transform.GetChild(1).transform.position = new Vector3(-0.5f, -29f, 1f);
+                luzLinterna.spotAngle = 55;
+                Instantiate(particulasAzul, transform);
+                break;
+
+
+
+            default:
                 break;
         }
                 // agregar sonido de cambio de luz aqui
@@ -63,5 +79,5 @@ public class Linterna : MonoBehaviour
 }
 public enum TIPOLINTERNA
 {
-    TipoLinternaRoja, TipoLinternaBlanca
+    TipoLinternaRoja, TipoLinternaBlanca,TipoLinternaAzul
 }

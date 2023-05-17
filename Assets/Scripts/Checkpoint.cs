@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using UnityEngine;
+using DG.Tweening;
 [RequireComponent(typeof(BoxCollider))]
 
 public class Checkpoint : MonoBehaviour
@@ -42,10 +43,10 @@ public class Checkpoint : MonoBehaviour
         var enemigos = GameObject.FindObjectsOfType<Enemigo>().ToList();
         enemigos.ForEach(e => e.transform.root.transform.position = e.starPos);
     }
-    [SerializeField] GameObject muroInivisiblePrefab;
-    public void CrearMuroInvicible()
+    [SerializeField] GameObject puertaZonaSegura;
+    void AbrirPuerta()
     {
-        muroInivisiblePrefab.SetActive(true);
-
+        puertaZonaSegura.transform.DOMoveZ(3, 2);
     }
+
 }

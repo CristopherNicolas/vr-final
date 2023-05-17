@@ -24,13 +24,28 @@ public class Personaje : MonoBehaviour
     // agacharse
     private void Update()
     {
-        if (xrInput.actions["Activate"].IsPressed())
+        if (xrInput.actions["Activate"].IsPressed()||Input.GetKeyDown(KeyCode.L))
         {
             Debug.Log("xr input derecho presionado");
-             linterna.CambiarTipoDeLinterna
-                (linterna.tipolINTERNA == TIPOLINTERNA.TipoLinternaBlanca 
-                ? TIPOLINTERNA.TipoLinternaRoja
-                 :TIPOLINTERNA.TipoLinternaBlanca);
+
+
+            TIPOLINTERNA tIPOLINTERNA = linterna.tipolINTERNA;
+            switch (tIPOLINTERNA)
+            {
+                case TIPOLINTERNA.TipoLinternaRoja:
+                    linterna.CambiarTipoDeLinterna(TIPOLINTERNA.TipoLinternaBlanca);
+                    break;
+                case TIPOLINTERNA.TipoLinternaBlanca:
+                    linterna.CambiarTipoDeLinterna(TIPOLINTERNA.TipoLinternaAzul);
+                    break;
+                case TIPOLINTERNA.TipoLinternaAzul:
+                    linterna.CambiarTipoDeLinterna(TIPOLINTERNA.TipoLinternaRoja);
+                    break;
+                default:
+                    break;
+            }
+
+
         }
         if (xrInput.actions["Agacharse"].IsPressed())
         {
