@@ -27,7 +27,12 @@ public class Linterna : MonoBehaviour
             print("linterna colicionada con brazo,añadida como parent");
             transform.parent = other.gameObject.transform;
             GetComponent<Rigidbody>().isKinematic = true;
-            GetComponent<BoxCollider>().isTrigger = true;
+            transform.localPosition = new Vector3(0, 0.6f, 0);
+            transform.rotation = Quaternion.Euler(-89, -36, 35);
+
+            Debug.Log(transform.localPosition);
+            //sonido de farol
+
         }
     }
     void CambiarColorLuz(Color c) => luzLinterna.color = c;

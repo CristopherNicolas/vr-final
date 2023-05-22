@@ -27,8 +27,6 @@ public class Personaje : MonoBehaviour
         if (xrInput.actions["Activate"].IsPressed()||Input.GetKeyDown(KeyCode.L))
         {
             Debug.Log("xr input derecho presionado");
-
-
             TIPOLINTERNA tIPOLINTERNA = linterna.tipolINTERNA;
             switch (tIPOLINTERNA)
             {
@@ -44,8 +42,6 @@ public class Personaje : MonoBehaviour
                 default:
                     break;
             }
-
-
         }
         if (xrInput.actions["Agacharse"].IsPressed())
         {
@@ -60,6 +56,10 @@ public class Personaje : MonoBehaviour
                 transform.GetChild(0).transform.position = offset/2;
                 estaAgachado = true;
             }
+        }
+        if (xrInput.actions["menu"].IsPressed())
+        {
+            print("menu activado");
         }
     }
     public void Agacharse()
