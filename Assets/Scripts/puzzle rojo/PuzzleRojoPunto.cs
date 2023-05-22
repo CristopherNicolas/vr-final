@@ -18,17 +18,23 @@ public class PuzzleRojoPunto : MonoBehaviour
     }
     public void ApagarPunto()
     {
-        l.DOColor(Color.black, 1);
+        l.DOColor(Color.white, 1);
         // sonido de apagar luz puzzle rojo
     }
   
     private void OnTriggerEnter(Collider other)
     {
-        if (other.GetComponent<ColicionLinterna>() && !transform.parent.GetComponent<PuzzleRojo>().puntosRojosAlumbrados.Contains(this))
-        {
             //comprobar si es la luz que sigue en el puzzle
             //si es la que continua, prender esta, si no ,resetear puzle
+        if (other.GetComponent<ColicionLinterna>() && !transform.parent.GetComponent<PuzzleRojo>().puntosRojosAlumbrados.Contains(this) )
+        {
             PrenderPunto();
+            //l.intensity=1;
+        }
+        else
+        {
+            ApagarPunto();
+            transform.parent.GetComponent<PuzzleRojo>().ResetearPuzzle();
         }
     }
 

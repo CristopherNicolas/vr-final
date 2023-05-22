@@ -8,9 +8,13 @@ using DG.Tweening;
 
 public class Checkpoint : MonoBehaviour
 {    
-    private void Start()
+    private IEnumerator Start()
     {
-        GetComponent<BoxCollider>().isTrigger=true;    
+        GetComponent<BoxCollider>().isTrigger=true;
+        yield return new WaitForSeconds(5);
+        puertaStarPos = puertaZonaSegura.transform.position;
+        AbrirPuerta();
+        //poner sonido comenzar nivel
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -44,6 +48,7 @@ public class Checkpoint : MonoBehaviour
         enemigos.ForEach(e => e.transform.root.transform.position = e.starPos);
     }
     [SerializeField] GameObject puertaZonaSegura;
+    Vector3 puertaStarPos;
     void AbrirPuerta()
     {
         puertaZonaSegura.transform.DOMoveZ(3, 2);
