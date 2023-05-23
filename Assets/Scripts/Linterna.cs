@@ -35,6 +35,13 @@ public class Linterna : MonoBehaviour
 
         }
     }
+    private void Update()
+    {
+        if (bateriaActual<=0)
+        {
+            UnityEngine.SceneManagement.SceneManager.LoadScene(0);
+        }
+    }
     void CambiarColorLuz(Color c) => luzLinterna.color = c;
     [ContextMenu("Cambiar de linterna segun el enum de la clase linterna")]
     public void CambiarTipoDeLinterna(TIPOLINTERNA _tIPOLINTERNA)
